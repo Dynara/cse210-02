@@ -59,15 +59,18 @@ class Director:
         if not self.is_playing:
             return  
 
-        cards.keep_playing()
-        
+        self.cards.keep_playing()
+      
         # Update score from the cards.earned_lost
         # score = cards.earned_lost()
 
-        # Add/subtract the amount from earned_lost        
-        # self.total_score += score
-
-             
+        # Add the amount from earned_lost if positive
+        # if self.cards.value > 0:        
+        #   self.total_score += self.card.value
+        # Subtract amount lost if negative
+        # else:
+        #   self.total_score -= self.card.value
+         
         
 # Stacie
     def do_outputs(self):
@@ -80,9 +83,9 @@ class Director:
             return  
 
         # update value to what the next card is
-        values = cards.display_card()
+        values = self.cards.display_card()
        
         # Display next card
         print(f"Next card was: {values}")
         # Display total score
-        print(f"Your score is: {cards.overall_score}\n")
+        print(f"Your score is: {self.cards.overall_score}\n")
