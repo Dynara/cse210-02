@@ -40,6 +40,14 @@ class Card:
 
 # 7) Dylan Ask playing to keep playing if points > 0
     def keep_playing():
-        pass
+        print('Do you wish to continue play:')
+        x = input()
+        if x == 'Y' and points > 0:
+            display_card()
+            ask_player()
+            earned_lost()
+            overall_score()
+        elif x == 'N' or points == 0:
+            print('Thank you for playing')
 
 
