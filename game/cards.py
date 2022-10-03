@@ -19,12 +19,12 @@ class Card:
             self (cards): An instance of cards
         """
         self.value = 0
-        pass
+        # Game starts with 300 points
+        self.points = 300
 
 # 3) Angela Display int between 1 to 13
     def display_card(self):
         self.value = random.randint(1, 13)
-        pass
 
 # 4) Angela Player guess higher or lower
     def ask_player():

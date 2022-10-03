@@ -1,3 +1,4 @@
+from functools import total_ordering
 from optparse import Values
 from game.cards import Card
 
@@ -20,7 +21,8 @@ class Director:
         self.card = []
         self.is_playing = True
         self.score = 0
-        self.total_score = 0
+        # Start Game with 300 for score
+        self.total_score = 300
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -54,6 +56,18 @@ class Director:
         Args:
             
         """
+        if not self.is_playing:
+            return  
+
+        cards.keep_playing()
+        
+        # Update score from the cards.earned_lost
+        # score = cards.earned_lost()
+
+        # Add/subtract the amount from earned_lost        
+        # self.total_score += score
+
+             
         
 # Stacie
     def do_outputs(self):
@@ -62,6 +76,13 @@ class Director:
         Args:
             
         """
-        
+        if not self.is_playing:
+            return  
 
-
+        # update value to what the next card is
+        values = cards.display_card()
+       
+        # Display next card
+        print(f"Next card was: {values}")
+        # Display total score
+        print(f"Your score is: {cards.overall_score}\n")
