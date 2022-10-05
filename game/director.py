@@ -18,6 +18,7 @@ class Director:
         Args:
             
         """
+        card = Card()
         self.card = []
         self.is_playing = True
         self.score = 0
@@ -59,7 +60,7 @@ class Director:
         if not self.is_playing:
             return  
 
-        self.cards.keep_playing()
+        card.keep_playing()
       
         # Update score from the cards.earned_lost
         # score = cards.earned_lost()
@@ -83,9 +84,9 @@ class Director:
             return  
 
         # update value to what the next card is
-        values = self.cards.display_card()
+        values = card.display_card()
        
         # Display next card
         print(f"Next card was: {values}")
         # Display total score
-        print(f"Your score is: {self.cards.overall_score}\n")
+        print(f"Your score is: {card.overall_score}\n")
