@@ -32,7 +32,7 @@ class Director:
             self.get_inputs()
             self.do_updates()
             self.do_outputs()
-           
+            
 
 # Dylan
     def get_inputs(self):
@@ -41,6 +41,7 @@ class Director:
         Args:
            self (Director): An instance of Director 
         """
+        
         guess_card = input("higher or lower? [h/l] ").lower()
         if guess_card == "h" or guess_card == "l":
             print("Next card was")
