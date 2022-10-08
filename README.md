@@ -40,6 +40,9 @@ Hilo is a game in which the player guesses if the next card drawn by the dealer 
 
 # Contributors
 Stacie Abbey abb12007@byui.edu
-Oghenehome Igho igh22002@byui.edu
+
 Francisco Franco fra22014@byui.edu
+
+Oghenehome Igho igh22002@byui.edu
+
 Dylan McCann mcc15029@byui.edu
