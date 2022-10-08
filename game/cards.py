@@ -23,4 +23,4 @@ class Card:
 # 3) Display int between 1 to 13
     def display_card(self):
         self.value = random.randint(1, 13)
-
+        return self.value

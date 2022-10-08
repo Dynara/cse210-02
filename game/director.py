@@ -1,4 +1,3 @@
-
 from game.cards import Card
 
 class Director:
@@ -7,7 +6,10 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-
+        is_playing (boolean) : Whether or not the game is being played.
+        points (int) : The score after one round of play.
+        first_card ([Card]) : random integer (1,13)
+        next_card ([Card]) : random integer (1,13)
         
     """
 # Angela
@@ -40,13 +42,15 @@ class Director:
         """Ask the user if the card is hi or lo
 
         """
-        
-        guess_card = input("higher or lower? [h/l] ").lower()
-        if guess_card == "h" or guess_card == "l":
-            print("Next card was")
+        # class Card, display_card method
+        self.first_card = Card.display_card(self)
+        self.next_card = Card.display_card(self)
 
+         # Initial card
+        print(f"The card is: {self.first_card}")
 
-        
+        self.guess_card = input("higher or lower? [h/l] ").lower()
+
 
 # Francisco & Oghenekome       
     def do_updates(self):
@@ -59,12 +63,20 @@ class Director:
             return  
         
         
-        for i in range(len(self.first_card)):
-            card = self.first_card
-            card.roll()
+        # 2nd card is greater than first card, +100
+        if self.guess_card == "h" and self.first_card <= self.next_card:
+            self.points += 100
+        # 2nd card is lower than first card, +100
+        elif self.guess_card == "l" and self.first_card > self.next_card:
+            self.points += 100
+        # They guessed wrong
+        else:
+            self.points -= 75
         
-        # Update points
-        
+        # Couldn't get this to work because there is no list/length        
+        #for i in range(len(self.first_card)):
+        #    card = self.first_card
+        #    card.roll()
 
         
 # Stacie
@@ -83,3 +95,4 @@ class Director:
         print()
         # Only continue if player says 'y' and have over 0 points
         self.is_playing = (play_again == 'y' and self.points > 0)
+        
