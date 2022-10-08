@@ -1,5 +1,4 @@
-from functools import total_ordering
-from optparse import Values
+
 from game.cards import Card
 
 class Director:
@@ -11,19 +10,18 @@ class Director:
 
         
     """
-
+# Angela
     def __init__(self):
         """Constructs a new Director.
         
         Args:
             
-        """
-        card = Card()
-        self.card = []
+        """     
         self.is_playing = True
-        self.score = 0
-        # Start Game with 300 for score
-        self.total_score = 300
+        self.first_card = 0
+        self.next_card = 0
+        self.points = 300
+
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -41,8 +39,6 @@ class Director:
     def get_inputs(self):
         """Ask the user if the card is hi or lo
 
-        Args:
-           self (Director): An instance of Director 
         """
         
         guess_card = input("higher or lower? [h/l] ").lower()
@@ -51,43 +47,39 @@ class Director:
 
 
         
-# Stacie       
-    def do_updates(self):
-        """Updates the player's overall score
 
-        Args:
-            
+# Francisco & Oghenekome       
+    def do_updates(self):
+        """Updates the player's overall score   
+        The player earns 100 points if they guessed correctly.
+        The player loses 75 points if they guessed incorrectly.
+        If a player reaches 0 points the game is over        
         """
         if not self.is_playing:
             return  
+        
+        
+        for i in range(len(self.first_card)):
+            card = self.first_card
+            card.roll()
+        
+        # Update points
+        
 
-        card.keep_playing()
-      
-        # Update score from the cards.earned_lost
-        # score = cards.earned_lost()
-
-        # Add the amount from earned_lost if positive
-        # if self.cards.value > 0:        
-        #   self.total_score += self.card.value
-        # Subtract amount lost if negative
-        # else:
-        #   self.total_score -= self.card.value
-         
         
 # Stacie
     def do_outputs(self):
-        """Displays . Also asks the player if they would like to keep playing
-
-        Args:
-            
+        """Displays next card and score
         """
         if not self.is_playing:
             return  
 
-        # update value to what the next card is
-        values = card.display_card()
-       
         # Display next card
-        print(f"Next card was: {values}")
-        # Display total score
-        print(f"Your score is: {card.overall_score}\n")
+        print(f"Next card : {self.next_card}")
+        # Display points after round
+        print(f"Your score is: {self.points}")
+        # Ask player if they want to continue
+        play_again = input("Play again? [y/n]")
+        print()
+        # Only continue if player says 'y' and have over 0 points
+        self.is_playing = (play_again == 'y' and self.points > 0)
